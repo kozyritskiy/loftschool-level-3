@@ -1,0 +1,42 @@
+extends ../main.layout.pug
+
+block variables
+    - var title = 'Блог';
+    - var titlePage = 'БЛОГ';
+    - var titleSite = 'Статьи, которые я написал';
+
+block scripts
+    script(src='blog.bundle.js')
+
+block content
+    include ../common/preloader
+    include ../common/full-menu
+    section.section.hero
+        include ../common/header
+        .author__hero
+            .author
+                .author__bg
+                    img(src="./assets/images/svg/stars1.svg", alt="galaxy").author__icon
+                .author__data
+                    .author__avatar
+                        img.author__img(src="./assets/images/content/avatar-small.jpg", alt="photo__img")
+                    .author__desc
+                        .author__name.author__name_blog #{titlePage}
+                        .author__info #{titleSite}
+        .down-btn__hero
+            .down-btn
+                a(href="down").down-btn__link
+                    +icon('portf_arrow_down', 'down-btn__icon')
+    section.blog#down
+        +triangles('blog')
+        .blog-column
+            .blog-column__nav
+                +nav('blog-menu', post, 0)
+            .blog-column__article
+                .post
+                    +post('post', post)
+            .blog-column__empty 
+        footer.footer-blog
+            include ../common/footer
+
+

@@ -1,0 +1,69 @@
+extends ../main.layout.pug
+
+block variables
+    - var title = 'Обо мне';
+    - var titlePage = 'Козырицкий Максим';
+    - var titleSite = 'Личный сайт веб-разработчика';
+
+block scripts
+    script(src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7QzCtnBcBXYgit0HsHVbgUAf55uZhanM")
+    script(src='about.bundle.js')
+
+block content
+    include ../common/full-menu
+    section.section.hero
+        include ../common/header
+        .author__hero
+            .author
+                .author__bg
+                    img(src="./assets/images/svg/stars1.svg", alt="galaxy").author__icon
+                .author__data
+                    .author__avatar
+                        img.author__img(src="./assets/images/content/avatar-small.jpg", alt="photo__img")
+                    .author__desc
+                        .author__name #{titlePage}
+                        .author__info #{titleSite}
+        .down-btn__hero
+            .down-btn
+                a(href="down").down-btn__link
+                    +icon('portf_arrow_down', 'down-btn__icon')
+    section.about#down
+        +triangles('about') 
+        .about__left
+            .about__left-title
+                .block-title Обо мне
+                img(src="./assets/images/svg/stars2.svg", alt="galaxy").title__icon
+            .about__left-content
+                .user-description
+                    .user-description__image
+                        img(src="./assets/images/content/avatar-big.jpg", alt="user-description__avatar").user-description__avatar    
+                    .user-description__data
+                        .user-description__title
+                            .block-subtitle Кто я 
+                            hr
+                        .user-description__text.text-content
+                            p Lorem, ipsum dolor sit amet consectetur adipisicing elit. In tempore non modi ex quia deserunt, beatae sint explicabo consequuntur maxime cupiditate, aliquam repudiandae tenetur natus labore voluptatum fugiat totam veritatis.
+                            p Lorem, ipsum dolor sit amet consectetur adipisicing elit. In tempore non modi ex quia deserunt, beatae sint explicabo consequuntur maxime cupiditate, aliquam repudiandae tenetur natus labore voluptatum fugiat totam veritatis.
+        .about__right
+            .about__right-title
+                .block-subtitle.block-subtitle_right Чем я могу быть вам полезен
+                hr
+            .about__right-description.text-content
+                p Lorem ipsum dolor sit amet consectetur adipisicing elit. Iste velit mollitia nemo reprehenderit ipsam corrupti deleniti, blanditiis sit magni fuga eveniet hic sint illo? Quae harum voluptatem optio ipsum blanditiis. 
+            .about__right-content
+                #skills-container
+                    
+    section.map
+        .google-map#map
+        .map__data
+            .contacts
+                h2.contacts__titles
+                    .block-subtitle.block-subtitle_contacts Контакты
+                    hr
+                .contacts__data
+                    +contacts('contacts', contacts)
+                                         
+        footer.footer
+            include ../common/footer
+
+           
